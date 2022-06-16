@@ -1,5 +1,6 @@
 //ssbind created by mehdi salartayefeh
 //it is like angularjs but easier and lighter and better
+//renamed to jsBind at 2022
 
 function ss_inputChanges(){
     document.querySelectorAll('input[id]').forEach(function (input) {
@@ -13,26 +14,26 @@ function ss_inputChanges(){
 function  ss_update() {
     window[this.id] = this.value;
 
-    document.querySelectorAll('[ssfor]').forEach(function (obj) {
-        let ssfor = obj.getAttribute('ssfor');
+    document.querySelectorAll('[jsfor]').forEach(function (obj) {
+        let ssfor = obj.getAttribute('jsfor');
         //delete pre created
-        if(obj.hasAttribute('ssbind'))
-            obj.setAttribute('ssbind', obj.getAttribute('ssbind').replace(/\[0\]/g,'[ssIndex]'));
-        document.querySelectorAll('[_ssfor="'+ssfor+'"]').forEach(function(el){el.remove()});
+        if(obj.hasAttribute('jsbind'))
+            obj.setAttribute('jsbind', obj.getAttribute('jsbind').replace(/\[0\]/g,'[jsIndex]'));
+        document.querySelectorAll('[_jsfor="'+ssfor+'"]').forEach(function(el){el.remove()});
         ssfor = eval(ssfor);
 
         if(typeof ssfor == "number") {
             var _oH = obj.outerHTML;
             let oH = "";
             for (let i = 0; i < ssfor; i++) {
-                oH += _oH.replace(/ssIndex/g, i).replace(/ssfor/g , (i>0) ? '_ssfor': 'ssfor');
+                oH += _oH.replace(/jsIndex/g, i).replace(/jsfor/g , (i>0) ? '_jsfor': 'jsfor');
             }
             obj.outerHTML = oH;
         } else if(Array.isArray(ssfor)) {
             let _oH = obj.outerHTML;
             let oH = "";
             for (let i = 0; i < ssfor.length; i++) {
-                oH += _oH.replace(/ssIndex/g, i).replace(/ssfor/g , (i>0) ? '_ssfor': 'ssfor');
+                oH += _oH.replace(/jsIndex/g, i).replace(/jsfor/g , (i>0) ? '_jsfor': 'jsfor');
             }
             obj.outerHTML = oH;
         }
@@ -40,8 +41,8 @@ function  ss_update() {
 
     window[this.id] = this.value;
     ss_inputChanges();
-    document.querySelectorAll('[ssbind]').forEach(function (obj) {
-        let ssbinds = obj.getAttribute('ssbind').split(",");
+    document.querySelectorAll('[jsbind]').forEach(function (obj) {
+        let ssbinds = obj.getAttribute('jsbind').split(",");
         for (let b = 0; b < ssbinds.length; b++) {
             let ssbind = ssbinds[b];
             let attr = ssbind.split(":")[0].trim();
@@ -67,26 +68,26 @@ function ss_updateit(xbj) {
     window[this.id] = this.value;
 
     var xid = xbj.id || this.id || xbj;
-    document.querySelectorAll('[ssfor='+xid+']').forEach(function (obj) {
-        let ssfor = obj.getAttribute('ssfor');
+    document.querySelectorAll('[jsfor='+xid+']').forEach(function (obj) {
+        let ssfor = obj.getAttribute('jsfor');
         //delete pre created
-        if(obj.hasAttribute('ssbind'))
-            obj.setAttribute('ssbind', obj.getAttribute('ssbind').replace(/\[0\]/g,'[ssIndex]'));
-        document.querySelectorAll('[_ssfor="'+ssfor+'"]').forEach(function(el){el.remove()});
+        if(obj.hasAttribute('jsbind'))
+            obj.setAttribute('jsbind', obj.getAttribute('jsbind').replace(/\[0\]/g,'[jsIndex]'));
+        document.querySelectorAll('[_jsfor="'+ssfor+'"]').forEach(function(el){el.remove()});
         ssfor = eval(ssfor);
 
         if(typeof ssfor == "number") {
             var _oH = obj.outerHTML;
             let oH = "";
             for (let i = 0; i < ssfor; i++) {
-                oH += _oH.replace(/ssIndex/g, i).replace(/ssfor/g , (i>0) ? '_ssfor': 'ssfor');
+                oH += _oH.replace(/jsIndex/g, i).replace(/jsfor/g , (i>0) ? '_jsfor': 'jsfor');
             }
             obj.outerHTML = oH;
         } else if(Array.isArray(ssfor)) {
             let _oH = obj.outerHTML;
             let oH = "";
             for (let i = 0; i < ssfor.length; i++) {
-                oH += _oH.replace(/ssIndex/g, i).replace(/ssfor/g , (i>0) ? '_ssfor': 'ssfor');
+                oH += _oH.replace(/jsIndex/g, i).replace(/jsfor/g , (i>0) ? '_jsfor': 'jsfor');
             }
             obj.outerHTML = oH;
         }
@@ -94,8 +95,8 @@ function ss_updateit(xbj) {
 
     window[this.id] = this.value;
 
-    document.querySelectorAll('[ssbind*='+xid+']').forEach(function (obj) {
-        let ssbinds = obj.getAttribute('ssbind').split(",");
+    document.querySelectorAll('[jsbind*='+xid+']').forEach(function (obj) {
+        let ssbinds = obj.getAttribute('jsbind').split(",");
         for (let b = 0; b < ssbinds.length; b++) {
             let ssbind = ssbinds[b];
             let attr = ssbind.split(":")[0].trim();
