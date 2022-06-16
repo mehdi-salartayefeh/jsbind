@@ -14,4 +14,4 @@ Now we have another input element and we want it's value be bonded to <code>Inpu
 ```
 Input 2: <input readonly jsbind="value:Input1">
 
-<a href="#">See Demo</a>
+<a href="https://mehdi-salartayefeh.github.io/front-end/jsbind/">See Demo</a>
