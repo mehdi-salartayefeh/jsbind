@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <script>
+
+        var t = {
+            color: 'red',
+            "font-size": "2pc"
+        }
+
+        var arr = [
+            "aaa",
+            "bbb",
+            "ccc"
+        ]
+
+        var options = [
+            {key: 1, value: 'one'},
+            {key: 2, value: 'two'},
+            {key: 3, value: 'three'},
+        ]
+
+        // var size2 = 100
+    </script>
+
+    <style>
+        body {
+            padding: 3pc;
+            line-height: 2;
+            background-color: blanchedalmond;
+        }
+
+        h1 {
+            color: darkgray;
+        }
+    </style>
+
+</head>
+<body>
+<h1 align="center">
+    ssbind Demo
+</h1>
+
+<label for="firstname" ssbind="text:firstname , style.color:t.color, style.font-size:t['font-size']">firstname</label>:
+<input id="firstname" value="salam">
+<br>
+lastname <input id="lastname" value="salar">
+<br>
+<button onclick="alert(firstname +'-'+lastname)">Alert full name</button>
+<br>
+full name <input id="fullname" ssbind="value:firstname+' '+lastname , style.background-color:colory">
+<br>
+color: <input type="color" id="colory" value="#00ff00">
+<br>
+size: <br>
+<input type="range" id="size" ssbind1="value:lastname" value="20">
+<br>
+<div style="border: 2px solid blue; background-color: aqua" ssbind="style.width:size , style.height:size , text:size"></div>
+
+
+<br>
+<ol>
+    <li ssfor="4" ssbind="text:ssIndex+1 +' sss' "></li>
+</ol>
+<ul>
+    <li ssfor="arr" ssbind="text:arr[ssIndex]"></li>
+
+    bug replace just for first is bad
+
+</ul>
+<select id="sel">
+    <option ssfor="options" ssbind="text:options[ssIndex].value , value:options[ssIndex].key"></option>
+</select>
+
+<input id="z" ssbind="value:sel.value">
+
+
+<table>
+    <tr ssfor="5">
+        <td><h2 ssbind="text: ssIndex+1"></h2></td>
+        <td><input ssbind="id:'name'+ssIndex"></td>
+        <td><input ssbind="id:'family'+ssIndex"></td>
+        <td><input id="ss" ssbind="value: name0.value + ' ' + family0.value "></td>
+    </tr>
+</table>
+
+<hr>
+
+<table>
+    <caption>auto bind</caption>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Family</th>
+        <th>Full Name</th>
+    </tr>
+    <tr ssfor="5">
+        <td><h2 ssbind="text: ssIndex+1"></h2></td>
+        <td><input id="xssIndex"></td>
+        <td><input id="yssIndex"></td>
+        <td><input ssbind="value:xssIndex+' '+yssIndex"></td>
+    </tr>
+</table>
+
+
+</body>
+<script src="ssbind.js"></script>
+</html>
